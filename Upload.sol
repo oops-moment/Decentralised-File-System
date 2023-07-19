@@ -5,7 +5,7 @@ pragma solidity >=0.7.0 <0.9.0;
 contract Upload {
   
   struct Access{
-     address user; 
+     address user; //hi
      bool access; //true or false
   }
   mapping(address=>string[]) value;
