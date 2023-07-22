@@ -9,14 +9,14 @@ contract Upload {
      bool access; //true or false
   }
   mapping(address=>string[]) value;
-  mapping(address=>mapping(address=>bool)) ownership;
-  mapping(address=>Access[]) accessList;
-  mapping(address=>mapping(address=>bool)) previousData;
+  mapping(address=>mapping(address=>bool)) ownership;        // 2d array 
+  mapping(address=>Access[]) accessList;                      // address of peopl who have access
+  mapping(address=>mapping(address=>bool)) previousData;     // all people who have address in past
 
-  function add(address _user,string memory url) external {
+  function add(address _user,string memory url) external {            // adds images into the value
       value[_user].push(url);
   }
-  function allow(address user) external {//def
+  function allow(address user) external {//def                     // allows the user
       ownership[msg.sender][user]=true; 
       if(previousData[msg.sender][user]){
          for(uint i=0;i<accessList[msg.sender].length;i++){
@@ -30,7 +30,7 @@ contract Upload {
       }
     
   }
-  function disallow(address user) public{
+  function disallow(address user) public{                   // takes the access away
       ownership[msg.sender][user]=false;
       for(uint i=0;i<accessList[msg.sender].length;i++){
           if(accessList[msg.sender][i].user==user){ 
@@ -39,7 +39,7 @@ contract Upload {
       }
   }
 
-  function display(address _user) external view returns(string[] memory){
+  function display(address _user) external view returns(string[] memory){                      //shows images
       require(_user==msg.sender || ownership[_user][msg.sender],"You don't have access");
       return value[_user];
   }
