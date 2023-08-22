@@ -24,6 +24,8 @@ Data Integrity: IPFS's content-addressable system and cryptographic hashes guara
 
 By combining IPFS, Pinata, React, and Solidity, our decentralized file system provides users with a secure, efficient, and distributed way to store, share, and manage their data without relying on a central authority.
 
+Last but not least we aim to extent it to files , videos and what not !
+
 
 
 
